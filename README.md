@@ -63,6 +63,8 @@ mvn test jacoco:report
 http://localhost:8080/sds/v1/swagger/swagger-ui/index.html
 ```
 
+![alt text](https://github.com/MoathAlshorman/discount-service/blob/main/openapi-documentation.png)
+
 #### Code Quality Checks
 
 ```
