@@ -12,5 +12,5 @@ public class Purchaser {
 
     private final String email;
     private final PurchaserType type;
-    private final Instant registerAt;
+    private final Instant registeredAt;
 }

@@ -3,11 +3,10 @@ package com.moath.ms.sds.domain.discount.processor;
 import java.math.BigDecimal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import com.moath.ms.sds.common.exception.DefaultServiceError;
-import com.moath.ms.sds.common.exception.ServiceException;
 import com.moath.ms.sds.domain.bill.Bill;
 import com.moath.ms.sds.domain.discount.DiscountProcessor;
 import com.moath.ms.sds.domain.discount.percentage.PercentageBasedDiscount;
+import com.moath.ms.sds.domain.discount.percentage.ZeroPercentageDiscount;
 
 /**
  * @author Moath.Alshorman
@@ -23,7 +22,7 @@ public class PercentageDiscountProcessor implements DiscountProcessor {
         return basedDiscountList.stream()
             .filter(discount -> discount.supports(bill))
             .findFirst()
-            .orElseThrow(() -> ServiceException.internalError(DefaultServiceError.INTERNAL_ERROR))
+            .orElse(new ZeroPercentageDiscount())
             .calculateDiscount(bill);
     }
 }

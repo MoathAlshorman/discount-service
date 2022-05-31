@@ -1,8 +1,9 @@
-package com.moath.ms.sds.adapter.in;
+package com.moath.ms.sds.adapter.in.rest;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import com.moath.ms.sds.domain.bill.Currency;
 import com.moath.ms.sds.port.in.BillDiscountPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,6 @@ public class BillDiscountRestAdapter {
      */
     @PostMapping("payable-amount")
     public ResponseEntity<NetAmountResponse> calculateNetPayableAmount(@RequestBody @Valid @NotNull final BillDiscountRequest bill) {
-        return ResponseEntity.ok(new NetAmountResponse(billDiscountPort.calculateNetPayableAmount(mapper.map(bill))));
+        return ResponseEntity.ok(new NetAmountResponse(billDiscountPort.calculateNetPayableAmount(mapper.map(bill)), Currency.SAR));
     }
 }

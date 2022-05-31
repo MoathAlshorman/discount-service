@@ -10,5 +10,6 @@ public enum PurchaserType {
 
     EMPLOYEE,
     AFFILIATE,
-    CUSTOMER
+    CUSTOMER,
+    NOT_APPLICABLE
 }

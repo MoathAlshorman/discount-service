@@ -1,4 +1,4 @@
-package com.moath.ms.sds.adapter.in;
+package com.moath.ms.sds.adapter.in.rest;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

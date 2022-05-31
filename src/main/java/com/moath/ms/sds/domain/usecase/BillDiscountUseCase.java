@@ -1,6 +1,7 @@
 package com.moath.ms.sds.domain.usecase;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
 import com.moath.ms.sds.common.annotation.UseCase;
 import com.moath.ms.sds.domain.bill.Bill;
@@ -21,6 +22,7 @@ public class BillDiscountUseCase implements BillDiscountPort {
 
     @Override
     public BigDecimal calculateNetPayableAmount(final Bill bill) {
-        return discountProcessor.process(bill);
+        final var netAmount = discountProcessor.process(bill);
+        return netAmount.setScale(3, RoundingMode.HALF_UP);
     }
 }

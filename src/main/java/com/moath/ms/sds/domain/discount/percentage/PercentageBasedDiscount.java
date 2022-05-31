@@ -7,6 +7,7 @@ import com.moath.ms.sds.common.exception.ServiceException;
 import com.moath.ms.sds.domain.bill.Bill;
 import com.moath.ms.sds.domain.bill.Item;
 import com.moath.ms.sds.domain.bill.ItemType;
+import com.moath.ms.sds.domain.bill.Purchaser;
 import com.moath.ms.sds.domain.bill.PurchaserType;
 import com.moath.ms.sds.domain.discount.DiscountStrategy;
 import com.moath.ms.sds.port.out.PercentageDiscountConfigPort;
@@ -31,9 +32,7 @@ public abstract class PercentageBasedDiscount implements DiscountStrategy<Bill> 
     @Override
     public boolean supports(final Bill bill) {
         final var purchaserId = bill.getPurchaserId();
-        final var purchaser = userPort.findUser(purchaserId)
-            .orElseThrow(() -> ServiceException.badRequest(DefaultServiceError.RECORD_NOT_FOUND, "purchaserId", purchaserId));
-
+        final var purchaser = findPurchaser(purchaserId);
         return purchaser.getType() == getUserType();
     }
 
@@ -53,8 +52,19 @@ public abstract class PercentageBasedDiscount implements DiscountStrategy<Bill> 
      *
      * @return the percentage amount
      */
-    protected final BigDecimal getDiscountPercentage() {
+    protected BigDecimal getDiscountPercentage() {
         return discountConfigsPort.findPercentageDiscount(getUserType());
+    }
+
+    /**
+     * Finds the purchaser for the given Id.
+     *
+     * @param purchaserId the search is against this id
+     * @return the matched {@link Purchaser} or throw {@link DefaultServiceError#RECORD_NOT_FOUND} exception
+     */
+    protected final Purchaser findPurchaser(final String purchaserId) {
+        return userPort.findUser(purchaserId)
+            .orElseThrow(() -> ServiceException.badRequest(DefaultServiceError.RECORD_NOT_FOUND, "purchaserId", purchaserId));
     }
 
     /**

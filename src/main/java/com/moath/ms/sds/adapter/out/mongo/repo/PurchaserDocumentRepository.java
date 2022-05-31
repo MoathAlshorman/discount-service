@@ -2,6 +2,7 @@ package com.moath.ms.sds.adapter.out.mongo.repo;
 
 import java.util.Optional;
 import com.moath.ms.sds.adapter.out.mongo.document.PurchaserDocument;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @since 29/05/2022
  */
 @Repository
-public interface PurchaserDocumentRepository extends MongoRepository<PurchaserDocument, String> {
+public interface PurchaserDocumentRepository extends MongoRepository<PurchaserDocument, ObjectId> {
 
 
     /**

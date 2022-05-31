@@ -1,4 +1,4 @@
-package com.moath.ms.sds.adapter.in;
+package com.moath.ms.sds.adapter.in.rest;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -38,9 +38,6 @@ public class BillDiscountRequest {
     @Valid
     @NotEmpty
     private final List<Item> items;
-
-    @Digits(integer = 12, fraction = 3)
-    private final BigDecimal netAmount;
 
     @NotNull
     private final Currency currency;
