@@ -1,6 +1,7 @@
 package com.moath.ms.sds.domain.discount;
 
 import java.math.BigDecimal;
+import com.moath.ms.sds.domain.bill.Bill;
 
 /**
  * All of application's strategies should implement this class to make sure for which T it should be applied.
@@ -8,7 +9,7 @@ import java.math.BigDecimal;
  * @author Moath.Alshorman
  * @since 28/05/2022
  */
-public interface DiscountStrategy<T> {
+public interface DiscountStrategy {
 
     /**
      * Decides if the given type is supported or not.
@@ -16,7 +17,7 @@ public interface DiscountStrategy<T> {
      * @param bill the type of bill you would like to apply this strategy upon
      * @return whether the given type is supported
      */
-    boolean supports(final T bill);
+    boolean supports(final Bill bill);
 
     /**
      * Calculates discount amount after applying the right discount on the given bill
@@ -25,5 +26,5 @@ public interface DiscountStrategy<T> {
      * @param bill the bill you would like to calculate its discount
      * @return the discount amount after applying the discount percentage
      */
-    BigDecimal calculateDiscount(final T bill);
+    BigDecimal calculateDiscount(final Bill bill);
 }

@@ -1,6 +1,7 @@
 package com.moath.ms.sds.common.exception;
 
 import java.text.MessageFormat;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

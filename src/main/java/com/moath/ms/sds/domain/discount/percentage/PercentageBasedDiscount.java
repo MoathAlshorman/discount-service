@@ -24,7 +24,7 @@ import com.moath.ms.sds.util.DiscountCalculator;
  * @since 28/05/2022
  */
 @RequiredArgsConstructor
-public abstract class PercentageBasedDiscount implements DiscountStrategy<Bill> {
+public abstract class PercentageBasedDiscount implements DiscountStrategy {
 
     private final PercentageDiscountConfigPort discountConfigsPort;
     private final UserPort userPort;
@@ -37,7 +37,7 @@ public abstract class PercentageBasedDiscount implements DiscountStrategy<Bill> 
     }
 
     @Override
-    public final BigDecimal calculateDiscount(final Bill bill) {
+    public BigDecimal calculateDiscount(final Bill bill) {
         final var filteredTotalAmount = bill.getItems()
             .stream()
             .filter(item -> item.getType() != ItemType.GROCERIES)

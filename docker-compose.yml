@@ -12,7 +12,7 @@ services:
     environment:
       - spring.data.mongodb.uri=mongodb://admin:secret@mongo:27017/discount_db?authSource=admin&authMechanism=SCRAM-SHA-1
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       - mongodb
   mongodb:

@@ -1,6 +1,7 @@
 package com.moath.ms.sds.domain.discount.percentage;
 
 import java.math.BigDecimal;
+import com.moath.ms.sds.domain.bill.Bill;
 import com.moath.ms.sds.domain.bill.PurchaserType;
 
 /**
@@ -26,5 +27,10 @@ public class ZeroPercentageDiscount extends PercentageBasedDiscount {
     @Override
     protected PurchaserType getUserType() {
         return PurchaserType.NOT_APPLICABLE;
+    }
+
+    @Override
+    public BigDecimal calculateDiscount(final Bill bill) {
+        return BigDecimal.ZERO;
     }
 }

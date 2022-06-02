@@ -1,5 +1,6 @@
 package com.moath.ms.sds.common.exception;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
  * @since 29/05/2022
  */
 @Getter
+@EqualsAndHashCode(callSuper = false)
 @RequiredArgsConstructor
 public class ServiceException extends RuntimeException {
 

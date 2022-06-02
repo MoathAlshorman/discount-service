@@ -9,5 +9,5 @@ import com.moath.ms.sds.domain.discount.DiscountStrategy;
  * @author Moath.Alshorman
  * @since 29/05/2022
  */
-public interface OverallDiscountStrategy extends DiscountStrategy<Bill> {
+public interface OverallDiscountStrategy extends DiscountStrategy {
 }

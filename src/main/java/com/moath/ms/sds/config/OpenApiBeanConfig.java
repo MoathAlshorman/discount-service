@@ -1,4 +1,4 @@
-package com.moath.ms.sds.infrasructure;
+package com.moath.ms.sds.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Profile;
  */
 @Profile("prod,dev")
 @Configuration
-public class SwaggerConfig {
+public class OpenApiBeanConfig {
 
     @Bean
     public OpenAPI customOpenAPI(

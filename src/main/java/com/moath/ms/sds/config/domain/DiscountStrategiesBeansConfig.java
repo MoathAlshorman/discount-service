@@ -1,4 +1,4 @@
-package com.moath.ms.sds.infrasructure;
+package com.moath.ms.sds.config.domain;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @RequiredArgsConstructor
-public class DiscountStrategiesConfig {
+public class DiscountStrategiesBeansConfig {
 
     private final PercentageDiscountConfigPort discountConfigPort;
     private final UserPort userPort;

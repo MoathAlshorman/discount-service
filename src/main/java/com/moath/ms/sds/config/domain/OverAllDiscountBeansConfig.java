@@ -1,4 +1,4 @@
-package com.moath.ms.sds.infrasructure;
+package com.moath.ms.sds.config.domain;
 
 import lombok.RequiredArgsConstructor;
 import com.moath.ms.sds.domain.discount.overall.OverallDiscountStrategy;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @RequiredArgsConstructor
-public class OverAllDiscountBeanConfig {
+public class OverAllDiscountBeansConfig {
 
     private final ThresholdDiscountConfigPort thresholdDiscountConfigPort;
 
