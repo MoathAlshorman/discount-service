@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import com.moath.ms.sds.domain.bill.Bill;
 import com.moath.ms.sds.domain.discount.DiscountProcessor;
 import com.moath.ms.sds.domain.discount.percentage.PercentageBasedDiscount;
-import com.moath.ms.sds.domain.discount.percentage.ZeroPercentageDiscount;
 
 /**
  * @author Moath.Alshorman
@@ -19,10 +18,8 @@ public class PercentageDiscountProcessor implements DiscountProcessor {
 
     @Override
     public BigDecimal process(final Bill bill) {
-        return basedDiscountList.stream()
-            .filter(discount -> discount.supports(bill))
-            .findFirst()
-            .orElse(new ZeroPercentageDiscount())
-            .calculateDiscount(bill);
+        return basedDiscountList.stream().filter(discount -> discount.supports(bill))
+            .map(percentageBasedDiscount -> percentageBasedDiscount.calculateDiscount(bill))
+            .reduce(BigDecimal.ZERO, (a, b) -> a.compareTo(b) > 0 ? a : b);
     }
 }
